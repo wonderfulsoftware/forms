@@ -1,7 +1,11 @@
-import { createFormPage } from "../packlets/forms";
+import { defineForm, FormPage } from "../packlets/forms";
 
-export default createFormPage((form) => {
+const logic = defineForm((form) => {
   form.section("forms", () => {
     form.say("Hello, world!");
   });
 });
+
+export default function IndexPage() {
+  return <FormPage logic={logic} />;
+}

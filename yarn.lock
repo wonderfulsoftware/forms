@@ -1570,6 +1570,7 @@ __metadata:
     eslint: 8.22.0
     eslint-config-next: 12.2.5
     init-middleware: ^0.0.1
+    jose: ^4.9.0
     multer: ^1.4.5-lts.1
     next: 12.2.5
     next-auth: ^4.10.3
@@ -2006,7 +2007,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^4.1.4, jose@npm:^4.3.7":
+"jose@npm:^4.1.4, jose@npm:^4.3.7, jose@npm:^4.9.0":
   version: 4.9.0
   resolution: "jose@npm:4.9.0"
   checksum: fc1e71f49327206eb58b23a2c5d463c3b1c84cd60ba2b8f8ab74db4a96ec079915fc71bc8b7d57d77b25d1426cd02eb218bf426738e803ab1a52adc1d96d0912

@@ -20,6 +20,7 @@
     "clsx": "^1.2.1",
     "create-type-helper": "^0.1.0",
     "init-middleware": "^0.0.1",
+    "jose": "^4.9.0",
     "multer": "^1.4.5-lts.1",
     "next": "12.2.5",
     "next-auth": "^4.10.3",
