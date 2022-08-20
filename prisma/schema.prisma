@@ -62,3 +62,16 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Form {
+    id        String   @id @default(uuid())
+    uid       String
+    form      String
+    token     String
+    data      String   @default("{}")
+    state     String   @default("{}")
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
+
+    @@unique([uid, form])
+}
