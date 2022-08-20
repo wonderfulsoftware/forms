@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import { Layout } from "../../../../packlets/layout";
 import { prisma } from "../../../../server/db/client";
 import * as forms from "../../../../forms";
 import { FormLogic, FormPage } from "../../../../packlets/forms";
@@ -10,6 +9,7 @@ interface Props {
   token: string;
   data: object;
   state: object;
+  id: string;
 }
 
 export default function Form(props: Props) {
@@ -18,7 +18,12 @@ export default function Form(props: Props) {
     throw new Error(`Form ${props.form} not found`);
   }
   return (
-    <FormPage initialState={props.state} data={props.data} logic={formLogic} />
+    <FormPage
+      initialState={props.state}
+      data={props.data}
+      logic={formLogic}
+      submitInput={{ id: props.id, token: props.token }}
+    />
   );
 }
 
@@ -46,6 +51,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   }
   return {
     props: {
+      id: record.id,
       uid,
       form,
       token,

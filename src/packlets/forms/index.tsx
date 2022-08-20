@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { createTypeHelper } from "create-type-helper";
-import { FC, Fragment, ReactNode, useId, useState } from "react";
+import { FC, Fragment, ReactNode, useId, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { trpc } from "../../utils/trpc";
 import { Layout } from "../layout";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,10 +12,30 @@ export interface FormPage {
   initialState?: KV;
   data?: KV;
   logic: FormLogic;
+  submitInput?: {
+    id: string;
+    token: string;
+  };
 }
 
+const emptyObject = {};
+
 export function FormPage(props: FormPage) {
-  const [state, setState] = useState<KV>(props.initialState || {});
+  const initialState = props.initialState || emptyObject;
+  const [state, setState] = useState<KV>(initialState);
+  const changed = useMemo(
+    () => JSON.stringify(state) !== JSON.stringify(initialState),
+    [state, initialState]
+  );
+  const mutation = trpc.useMutation(["form.save"], {
+    onSuccess() {
+      alert("Saved!");
+    },
+    onError(error, variables, context) {
+      alert(`Unable to save: ${error.message}`);
+    },
+  });
+
   let elements: JSX.Element[] = [];
   const push = (node: ReactNode) => {
     elements.push(<Fragment key={elements.length}>{node}</Fragment>);
@@ -108,7 +129,29 @@ export function FormPage(props: FormPage) {
       }
     },
   };
+
   props.logic(builder);
+
+  if (props.submitInput) {
+    push(
+      <div className="d-grid">
+        <button
+          type="button"
+          className="btn btn-primary btn-lg"
+          disabled={!changed || mutation.isLoading}
+          onClick={() =>
+            mutation.mutate({
+              ...props.submitInput,
+              state,
+            })
+          }
+        >
+          Save
+        </button>
+      </div>
+    );
+  }
+
   return <Layout>{elements}</Layout>;
 }
 
