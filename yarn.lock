@@ -961,6 +961,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"create-type-helper@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "create-type-helper@npm:0.1.0"
+  checksum: 477927464fa6184903712c3bd3628a6c0269c07f83ffd456e88d75b66dd15751f7a6254d15b6ee329d9832804740a0c598f202e1dfa2e970d7b1bdf39d6769bb
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.2":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -1551,6 +1558,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.33.0
     "@typescript-eslint/parser": ^5.33.0
     bootstrap: ^5.2.0
+    create-type-helper: ^0.1.0
     eslint: 8.22.0
     eslint-config-next: 12.2.5
     init-middleware: ^0.0.1
