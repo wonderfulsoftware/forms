@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import "bootstrap/dist/css/bootstrap.css";
+import ReactMarkdown from "react-markdown";
 
 const Home: NextPage = () => {
   const { data, isLoading } = trpc.useQuery([
@@ -27,8 +28,9 @@ const Home: NextPage = () => {
           <p>Question</p>
         </blockquote>
         <div className="text-muted">
-          <p>Some extra description</p>
-          <p>A’ight</p>
+          <ReactMarkdown>{`Some extra description
+
+A’ight`}</ReactMarkdown>
         </div>
         <div className="row mb-4 align-items-baseline">
           <div className="col-2 col-sm-1 text-end fs-5">👉</div>
