@@ -1,0 +1,18 @@
+services:
+  bot:
+    image: node:16
+    environment:
+      NODE_ENV: development
+      PORT: 4023
+    env_file: ./.env
+    working_dir: /app
+    init: true
+    command: node server.js
+    restart: always
+    volumes:
+      - ./.next/static:/app/.next/static:ro
+      - ./public:/app/public:ro
+      - ./.next/standalone:/app
+      - ./.data:/app/.data:rw
+    ports:
+      - 127.0.0.1:4023:4023
