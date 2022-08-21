@@ -33,5 +33,6 @@ Welcome to **Code Golf Party #1!**
     form.explain(
       "For the safety and peace of mind of participants and event staffs, we ask you to provide your ATK results"
     );
+    form.upload("atkResult");
   });
 });
