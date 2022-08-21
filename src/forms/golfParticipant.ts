@@ -28,6 +28,7 @@ Welcome to **Code Golf Party #1!**
     }
   });
 
+  /*
   form.section("COVID-19 Safety Measures", () => {
     form.ask("Please upload your ATK result");
     form.explain(
@@ -35,4 +36,5 @@ Welcome to **Code Golf Party #1!**
     );
     form.upload("atkResult");
   });
+  */
 });
